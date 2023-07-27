@@ -6,9 +6,12 @@ if [ "$RUNNER_OS" = "macOS" ]; then
 
   echo "calling sudo sysadminctl -addUser mitmproxyuser -admin"
   sudo sysadminctl -addUser mitmproxyuser -admin
+  
+  echo "calling sudo cat /etc/sudoers"
+  sudo cat /etc/sudoers
   echo "mitmproxyuser ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-  echo "calling cat /etc/sudoers"
-  cat /etc/sudoers
+  echo "calling sudo cat /etc/sudoers"
+  sudo cat /etc/sudoers
 
   # install requests for mitm plugin
   pip3 install mitmproxy requests
