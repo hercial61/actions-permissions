@@ -4,11 +4,15 @@ set -e
 
 if [ "$RUNNER_OS" = "macOS" ]; then
 
+  echo "calling sudo sysadminctl -addUser mitmproxyuser -admin"
   sudo sysadminctl -addUser mitmproxyuser -admin
   echo "mitmproxyuser ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+  echo "calling cat /etc/sudoers"
+  cat /etc/sudoers
 
   # install requests for mitm plugin
   pip3 install mitmproxy requests
+  echo "calling cp mitm_plugin.py /Users/mitmproxyuser/mitm_plugin.py"
   sudo cp mitm_plugin.py /Users/mitmproxyuser/mitm_plugin.py
 
   # start mitmdump in simple mode for now to generate CA certificate
