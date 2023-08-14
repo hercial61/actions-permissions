@@ -1,11 +1,6 @@
 on:
   workflow_dispatch:
 
-permissions:
-  contents: read
-  issues: read
-  pull-requests: read
-
 jobs:
   job1:
     strategy:
@@ -20,11 +15,4 @@ jobs:
     steps:
       - run: |
           #echo "runner ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-          sudo sysadminctl -addUser mitmproxyuser -admin
-        
-          # install requests for mitm plugin
-          pip3 install mitmproxy requests
-          # sudo cp mitm_plugin.py /Users/mitmproxyuser/mitm_plugin.py
-        
-          # start mitmdump in simple mode for now to generate CA certificate
-          sudo -u mitmproxyuser -H bash -e -c "cd /Users/mitmproxyuser && mitmdump &"        
+          sudo sysadminctl -addUser mitmproxyuser -admin    
