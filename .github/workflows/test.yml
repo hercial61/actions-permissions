@@ -27,20 +27,4 @@ jobs:
           # sudo cp mitm_plugin.py /Users/mitmproxyuser/mitm_plugin.py
         
           # start mitmdump in simple mode for now to generate CA certificate
-          sudo -u mitmproxyuser -H bash -e -c "cd /Users/mitmproxyuser && mitmdump &"
-        
-          # wait for mitmdump to start and generate CA certificate
-          counter=0
-          while [ ! -f /Users/mitmproxyuser/.mitmproxy/mitmproxy-ca-cert.pem ]
-          do
-            echo "waiting for mitmdump to generate the certificate..."
-            sleep 1
-            counter=$((counter+1))
-            if [ $counter -gt 10 ]; then
-              exit 1
-            fi
-          done
-        
-          # kill mitmdump, we'll start it again in transparent mode
-          pid=$(sudo lsof -i -P -n 2>/dev/null | sed -En "s/Python *([0-9]*) *mitmproxyuser *.*TCP \*:8080 \(LISTEN\)/\1/p" | head -1)
-          sudo kill $pid          
+          sudo -u mitmproxyuser -H bash -e -c "cd /Users/mitmproxyuser && mitmdump &"        
