@@ -15,4 +15,7 @@ jobs:
     steps:
       - run: |
           #echo "runner ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-          sudo sysadminctl -addUser mitmproxyuser -admin    
+          sudo sysadminctl -addUser mitmproxyuser -admin
+          pip3 install mitmproxy
+          # start mitmdump in simple mode for now to generate CA certificate
+          sudo -u mitmproxyuser -H bash -e -c "cd /Users/mitmproxyuser && mitmdump &"     
