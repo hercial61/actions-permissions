@@ -15,6 +15,6 @@ jobs:
     steps:
       - run: |
           #echo "runner ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-          #sudo sysadminctl -addUser mitmproxyuser -admin
+          sudo sysadminctl -addUser mitmproxyuser -admin
           pip3 install mitmproxy
-          sudo -H bash -e -c "mitmdump &" 
+          sudo -u mitmproxyuser -H bash -e -c "echo 'a'" 
