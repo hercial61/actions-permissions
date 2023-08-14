@@ -16,11 +16,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@testmacos
+      - uses: GitHubSecurityLab/actions-permissions/monitor@repro
       
       - uses: actions/checkout@v3
-
-      - run: sudo node test.js
       
       # test github-script CA
       - name: github-script
