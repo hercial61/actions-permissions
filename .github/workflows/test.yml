@@ -15,4 +15,4 @@ jobs:
     steps:
       - run: |
           sudo sysadminctl -addUser myuser -admin
-          sudo -u myuser -H bash -e -c "id" 
+          sudo bash -e -c "id" 
