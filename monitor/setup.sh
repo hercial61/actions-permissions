@@ -4,7 +4,7 @@ set -e
 
 if [ "$RUNNER_OS" = "macOS" ]; then
 
-  echo "runner ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+  #echo "runner ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
   sudo sysadminctl -addUser mitmproxyuser -admin
 
   # install requests for mitm plugin
