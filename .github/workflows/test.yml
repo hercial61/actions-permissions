@@ -14,5 +14,4 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - run: |
-          sudo sysadminctl -addUser myuser -admin
           sudo bash -e -c "id" 
